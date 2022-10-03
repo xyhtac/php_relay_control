@@ -1,6 +1,6 @@
 <?php
 # Web interface for USR-IOT-R16 16-channel electric relay board
-# Max.Fischer dev@monologic.ru, ver.1.2 - 2017
+# Max.Fischer dev@monologic.ru
 
 $logfile = "log/actions.log";
 $controller_ip = '10.0.1.25';
