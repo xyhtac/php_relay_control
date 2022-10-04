@@ -159,3 +159,43 @@ Back: 0XC3N clear register channel
 5. 0x44 clear all register data
 Back: 0xC4 0
 Description: S one byte, means register initial address (0-255) N one byte, means register quantity (1-255)
+
+
+### 6. Timing work command
+The system defines a storage range of 55 byte, used to storage the 5 timing commands of 0~4, location and sequence fixed (5 points at present, based on system processing ability, can be more)
+Note: You should use 0x70 commands to check if this function is available
+```
+    Class         |  Task ID      |  enable type                |   time              |   cmd                   |   Week enable
+-------------------------------------------------------------------------------------------------------------------------------------------
+Number of bytes   |  1            |  1                          |   4                 |   4                     |   1
+-------------------------------------------------------------------------------------------------------------------------------------------
+instructions      | Start from1,  | The highest means enable or | Unix time stamps,   | Carry out the commands  | Bit 0~6 stand for Sun.
+                  | 1~5 max 5     | not, 1 is enable, default   | high order in front | in this list, usually   | to Sat. 1 allow action,
+                  |               | enable when add.            |                     | means out put control   | 0 not allow, highest
+                  |               | Low order means cyclical    |                     | command, the lacked     | bit pls fill 0
+                  |               | patterns, see note          |                     | bytes use 0             | 
+-------------------------------------------------------------------------------------------------------------------------------------------
+example           |  0x01         |  0x80                       | 0x51C8E925          | 0x05 00 00 00           | 0x7F
+-------------------------------------------------------------------------------------------------------------------------------------------
+meaning           | Timing task 1 | enable|single task          | 2013-06-25 08:49:41 | Output all open         | Allow action everyday
+```
+Note:
+Cyclical type instructions: 0 single time, 1 minute circulate, 2 hour circulate, 3 day circulate, 4 month circulate. The system will adjust the timing time to the next time you need to perform according to cyclical patterns, after finish the timing task. Civil usage APP only think about single time and day circulate (choose which day to perform by week enable) is ok.
+Unix timestamp: The seconds from Jan.1st, 1970(UTC/GMT midnight), not including leap seconds. Example: 0x51C8E925=1372121381=Jun25, 2013 08:49:41
+Pls refer to http://shijianchuo.911cha.com/
+1. 0x50 N read timing task list
+Parameters: N: used to indicate reading N channel IO timing task, when N is 0, it means read all timing task, when N is not 0, it means read the timing task list for N channel IO. N from 0~255
+Return: 0xD0 +the number of qualified task {less than or equal to 5, 0 is no list}+task list, followed by arrangement, format as the table above.
+2. 0x51 add timing task
+Parameters: Type Time CMD Week as the above table
+Return: 0xD1 ID Type Time CMD Wee, ID means the location number after storage, FF means storage is full, storage failure
+3. 0x52 M N single timing task enable disable delete
+Parameters: M means the task number to operate 1~5M N means operation type 1 enable 2 disable 3 delete
+Return: 0xD2 M N
+4. 0x53 read system time
+Parameters: no
+Return: 0xD3 Time Time is Unix time stamp
+5. 0x54 set system time
+Parameters: Time
+Return: 0xD4 Result Time
+Result 1 means succeed, 0 means fail (it may not support or fail to set time because of hardware) Time is time stamp
