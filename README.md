@@ -15,7 +15,7 @@ For detailed information regarding communication protocol and integrated logic r
       <div class="io-control-icon">
         <i class="fa fa-envira" aria-hidden="true"></i>
       </div>
-      <div class="io-control-label">Irrigation</div>
+      <div class="io-control-label">Main pump</div>
     </td>
     <td align="right">
       <div class="io-switch">
