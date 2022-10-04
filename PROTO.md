@@ -109,3 +109,53 @@ Note: Input and output IO universal command
 1. 0x13 N read IO port current status
 Return: 0x93 N 1/0
 Special: Device can initiatively send this command to notify application, the current status has changed, this change is likely to be caused by external input, also may be caused by the program automatic control logic.
+
+
+### 3. PWM port and frequency command
+Note: PWM output without unit, can be 0-100 percent, also can be 0-255 RGB represent threeprimary colors
+1. 0x20 read all PWM status
+Return: 0xa0 DDDD current PWM value, each byte represent duty ratio of one channel
+Such as: return 0xA0 0x01 0x30 means the first channel duty ratio is 1, the second channel duty ratio is 48
+2. 0x21 DDDD set all PWM value
+Return: 0xa1 DDDD current PWM value, each byte represent duty ratio of one channel
+Such as: send 0x21 0x01 0x30 means set the first channel duty ratio is 1, set the second channel duty ratio is 48
+3. 0x22 N D set specified channel duty ratio output N means operating channel, D is actual value
+Return: 0xa2 N D, example: send 0x22 0x01 0x10 means set the first channel duty ratio 16
+4. 0x23 N read specified channel duty ratio output N means operating channel
+Return: 0xa3 N D, for example send 0x23 0x01, return 0xa3 0x01 0x10, means read and get
+the first channel duty ratio is 16
+5. 0x24N read all PWM duty ratio and frequency status
+Return: 0xa4 DD DH DL…
+6.0x25 DD DH DL… Set all PWM duty ratio and frequency status
+Return: 0xa5 DD DH DL…
+Each channel PWM have 1pcs bite duty ratio, 2pcs bite frequency, and several channel in turn arrangement.
+
+### 4. Frequency operating command
+Frequency operating command is in common with PWM operation command, but frequency parameter has two bytes, high in front and low behind
+1. 0x30 read all frequency status
+Return: 0xb0 DHDL DHDL current frequency value, every two bytes represent one channel frequency value
+Example: return 0xB0 0x00 0x30 0x10 0x00 means the first channel frequency is 0*256+48=48, the second channel frequency is 16*256+0=256
+2. 0x31 DHDL set all frequency value
+Return: 0xb1 DHDL DHDL current frequency value, each two bytes represent one channel frequency value
+Example: 0x31 0x01 0x30 0x00 0x20 means set the first channel frequency 1*256+48=304, set the second channel frequency 0+32=32
+3. 0x32 N D set specified channel frequency value N means operating channel, DHDL means actual value
+Return: 0xb2 N DH DL, for example send 0x22 0x01 0x10 0x02 means set the first channel frequency 16*256+2=4098
+4. 0x33 N read specified channel frequency value N represent the operating channel
+Return: 0xb3 N DH DL, for example, send 0x23 0x01, return 0xb3 0x01 0x10 0x02 means read and get the first channel frequency is16*256+2=4098
+
+
+### 5. Register command
+Each register data 2 bytes, showing the AD analog input and all the sensor data, top digit represent positive and negative, =1 means negative,=0 means positive, data part divided by 10 means, range from -3276.7 to +3276.7, example:
+Receive 0x80 0x10 means: -1.6
+Receive 0x01 0xaa means: +42.6
+1. 0x40 read all register data
+Return: 0xC0 DDDD ... Return all register data in turn
+2. 0x41 N read single register data
+Return: 0xC1 N DH DL single register data
+3. 0x42 S N read specific register section data
+Return: 0xC2 S N DH DL DH DL ... the specific register section data
+4. 0x43N clear single register data
+Back: 0XC3N clear register channel
+5. 0x44 clear all register data
+Back: 0xC4 0
+Description: S one byte, means register initial address (0-255) N one byte, means register quantity (1-255)
