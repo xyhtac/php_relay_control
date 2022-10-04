@@ -8,12 +8,12 @@ Max.Fischer dev@monologic.ru
 For details refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
 
 
-Channel control block
+### Channel control block
 ```html
 
 ```
 
-Custom action button block
+### Custom action button block
 ```html
 <table class="io-control-container">
   <tr>
