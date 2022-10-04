@@ -2,7 +2,17 @@
 
 ### General:
 Send command: packet head length ID command parameter parity, ID usually used for RS485, only use command+parameter in network status
-
+```
+packet head(2)    |   length(1)      |   ID(1)   |   Command (1)   |   Parameter (n)   |   parity(1)
+------------------------------------------------------------------------------------------------------------------------
+0x55 0xaa         | n+2, length      |    id     |       C         |       xxxxxx      | Length (including)
+                  |                  |           |                 |                   | Start to the end of parameters,
+                  |                  |           |                 |                   | accumulation and parity
+------------------------------------------------------------------------------------------------------------------------
+                  |                 parity including area                              |
+                  
+  
+```
 Respond command: packet head length ID command parameter parity, ID usually used for RS485, only use command+parameter in network status
 
 1. If it is very stable when used for network communication or serial port communication, can use [command parameter] to simplify communication. But this may cause miscalculation as
