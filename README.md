@@ -5,7 +5,7 @@ Max.Fischer dev@monologic.ru
 
 ![Web Interface for IO 16-channel relay board](/io-web-board.png?raw=true "Web interface - IO board")
 
-For detailed information regarding communication protocol and integrated logic refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
+For detailed information regarding communication protocol and board integrated logic features refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
 
 ### Channel control block
 ```html
