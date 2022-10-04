@@ -9,7 +9,7 @@ For details refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protoco
 
 
 Channel control block
-```
+```html
 <table class="io-control-container">
 	<tr><td>
 		<div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
@@ -24,7 +24,7 @@ Channel control block
 ```
 
 Custom action button block
-```
+```html
 <table class="io-control-container">
   <tr><td>
     <div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
