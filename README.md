@@ -8,3 +8,30 @@ Max.Fischer dev@monologic.ru
 For details refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
 
 
+Channel control block
+```
+<table class="io-control-container">
+  <tr><td>
+    <div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+    <div class="io-control-label"> Custom Action</div>
+  </td><td align="right">
+		<div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/action.php?action_id=6'>
+		  <div class="custom-action-label">activate</div>
+	  </div>
+	</tr></td>
+</table>
+```
+
+Custom action button block
+```
+<table class="io-control-container">
+  <tr><td>
+    <div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
+    <div class="io-control-label"> Custom Action</div>
+  </td><td align="right">
+		<div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/action.php?action_id=6'>
+		  <div class="custom-action-label">activate</div>
+	  </div>
+	</tr></td>
+</table>
+```
