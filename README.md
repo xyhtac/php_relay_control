@@ -15,11 +15,12 @@ For details refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protoco
       <div class="io-control-icon">
         <i class="fa fa-envira" aria-hidden="true"></i>
       </div>
-    	<div class="io-control-label">Irrigation</div>
-    </td><td align="right">
-		  <div class="io-switch">
-			  <input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='8' io-relay-invert='true' />
-		  </div>
+      <div class="io-control-label">Irrigation</div>
+    </td>
+    <td align="right">
+      <div class="io-switch">
+        <input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}' type="checkbox" io-relay-channel='8' io-relay-invert='true'/>
+      </div>
     </td>
   </tr>
 </table>
