@@ -165,19 +165,19 @@ Description: S one byte, means register initial address (0-255) N one byte, mean
 The system defines a storage range of 55 byte, used to storage the 5 timing commands of 0~4, location and sequence fixed (5 points at present, based on system processing ability, can be more)
 Note: You should use 0x70 commands to check if this function is available
 ```
-    Class         |  Task ID      |  enable type                |   time              |   cmd                   |   Week enable
+    Class       |  Task ID      |  enable type                |   time              |   cmd                   |   Week enable
 -------------------------------------------------------------------------------------------------------------------------------------------
-Number of bytes   |  1            |  1                          |   4                 |   4                     |   1
+Number of bytes |  1            |  1                          |   4                 |   4                     |   1
 -------------------------------------------------------------------------------------------------------------------------------------------
-instructions      | Start from1,  | The highest means enable or | Unix time stamps,   | Carry out the commands  | Bit 0~6 stand for Sun.
-                  | 1~5 max 5     | not, 1 is enable, default   | high order in front | in this list, usually   | to Sat. 1 allow action,
-                  |               | enable when add.            |                     | means out put control   | 0 not allow, highest
-                  |               | Low order means cyclical    |                     | command, the lacked     | bit pls fill 0
-                  |               | patterns, see note          |                     | bytes use 0             | 
+instructions    | Start from1,  | The highest means enable or | Unix time stamps,   | Carry out the commands  | Bit 0~6 stand for Sun.
+                | 1~5 max 5     | not, 1 is enable, default   | high order in front | in this list, usually   | to Sat. 1 allow action,
+                |               | enable when add.            |                     | means out put control   | 0 not allow, highest
+                |               | Low order means cyclical    |                     | command, the lacked     | bit pls fill 0
+                |               | patterns, see note          |                     | bytes use 0             | 
 -------------------------------------------------------------------------------------------------------------------------------------------
-example           |  0x01         |  0x80                       | 0x51C8E925          | 0x05 00 00 00           | 0x7F
+example         |  0x01         |  0x80                       | 0x51C8E925          | 0x05 00 00 00           | 0x7F
 -------------------------------------------------------------------------------------------------------------------------------------------
-meaning           | Timing task 1 | enable|single task          | 2013-06-25 08:49:41 | Output all open         | Allow action everyday
+meaning         | Timing task 1 | enable|single task          | 2013-06-25 08:49:41 | Output all open         | Allow action everyday
 ```
 Note:
 Cyclical type instructions: 0 single time, 1 minute circulate, 2 hour circulate, 3 day circulate, 4 month circulate. The system will adjust the timing time to the next time you need to perform according to cyclical patterns, after finish the timing task. Civil usage APP only think about single time and day circulate (choose which day to perform by week enable) is ok.
