@@ -4,3 +4,7 @@ Max.Fischer dev@monologic.ru
 
 
 ![Web Interface for IO 16-channel relay board](/io-web-board.png?raw=true "Web interface - IO board")
+
+For details refer to ![GPIO Protocol description](/PROTO.md "GPIO Protocol description")
+
+
