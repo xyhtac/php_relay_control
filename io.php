@@ -6,6 +6,7 @@ $logfile = "log/actions.log";
 $controller_ip = '10.0.1.25';
 $controller_port = '8899';
 $controller_pass = 'secret_password';
+$log_depth = 17000; 
 
 # Get params from query string
 parse_str($_SERVER['QUERY_STRING'], $params);
@@ -161,7 +162,7 @@ function statuslog ($chanid, $oldstatus, $newstatus) {
 	
 	if (file_exists ( $logfile ) ) {
 		$lines = explode("\n", file_get_contents($logfile) );
-		if ( count($lines) >= 17000 ) {
+		if ( count($lines) >= $log_depth ) {
 			$drop = array_shift($lines);
 		}
 		array_push($lines, $statusline);
