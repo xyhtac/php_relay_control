@@ -156,6 +156,7 @@ function strToHex ($string) {
 # Save old status, new status, source IP and timestamp.
 function statuslog ($chanid, $oldstatus, $newstatus) {
 	global $logfile;
+	global $log_depth;
 	$datestamp = date("m.d.Y H:i:s");
 	$client = $_SERVER['REMOTE_ADDR'];
 	$statusline = "<span class='datestamp'>$datestamp:</span> Relay '$chanid' toggled from '$oldstatus' to '$newstatus' by '$client'";
