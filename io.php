@@ -3,9 +3,9 @@
 # Max.Fischer dev@monologic.ru
 
 $logfile = "actions.log";
-$controller_ip = '___BmsControllerIP___';
+$controller_ip = '__BmsControllerIP__';
 $controller_port = '8899';
-$controller_pass = '___BmsControllerPassword___';
+$controller_pass = '__BmsControllerPassword__';
 $log_depth = 17000; 
 
 # Get params from query string
