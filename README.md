@@ -8,6 +8,7 @@ Max.Fischer dev@monologic.ru
 For detailed information regarding communication protocol and board integrated logic features refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
 
 ### 1. Configure your peripheral credentials
+> **Filename:** `config/credentials.json`
 ```json
 {
     "ptz-cam": {
@@ -34,6 +35,7 @@ For detailed information regarding communication protocol and board integrated l
 ```
 
 ### 2. Configure relay channels
+> **Filename:** `config/channels.json`
 ```json
 [
   {
@@ -66,6 +68,7 @@ For detailed information regarding communication protocol and board integrated l
 ```
 
 ### 3. Configure custom actions
+> **Filename:** `config/actions.json`
 ```json
 [
   {
