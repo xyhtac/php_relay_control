@@ -1,10 +1,10 @@
 
 <?php
 // Load channels config
-$channels = json_decode(file_get_contents(__DIR__ . '/channels.json'), true);
+$channels = json_decode(file_get_contents(__DIR__ . '/config/channels.json'), true);
 
 // Load actions config
-$actions = json_decode(file_get_contents(__DIR__ . '/actions.json'), true);
+$actions = json_decode(file_get_contents(__DIR__ . '/config/actions.json'), true);
 
 if ($channels === null || $actions === null) {
     die("Failed to load configuration files\n");
