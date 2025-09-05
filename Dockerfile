@@ -1,6 +1,6 @@
-FROM php:7.2-cli
+FROM php:7.2-apache
 
-# Install dependencies and the sockets extension
+# Install dependencies and sockets extension
 RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /etc/apt/sources.list \
  && sed -i 's|http://security.debian.org/debian-security|http://archive.debian.org/debian-security|g' /etc/apt/sources.list \
  && apt-get update -o Acquire::Check-Valid-Until=false \
@@ -9,6 +9,14 @@ RUN sed -i 's|http://deb.debian.org/debian|http://archive.debian.org/debian|g' /
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-CMD ["php", "-S", "0.0.0.0:80", "-t", "/usr/src/myapp"]
+# Copy your application to Apache document root
+COPY . /var/www/html/
+WORKDIR /var/www/html
+
+# Ensure Apache rewrites and proper permissions (optional)
+RUN chown -R www-data:www-data /var/www/html \
+ && a2enmod rewrite
+
+# Expose port 80 and start Apache in foreground
+EXPOSE 80
+CMD ["apache2-foreground"]
