@@ -169,7 +169,7 @@ $(function(){
 			chan_status = relay_channel[ chan_id - 1 ];
 			
 			toggle_invert = $( this ).attr('io-relay-invert');
-			if (toggle_invert == 1) { 
+			if (toggle_invert === '1') { 
 				logic_base = 1;
 			} else {
 				logic_base = 0;
