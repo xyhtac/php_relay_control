@@ -2,9 +2,13 @@
 # Web interface for USR-IOT-R16 16-channel electric relay board
 # Max.Fischer dev@monologic.ru
 
-$logfile = "actions.log";
-$controller_ip = '__BmsControllerIP__';
-$controller_pass = '__BmsControllerPassword__';
+
+require_once __DIR__ . "/config.php";
+$cred = load_credentials("bms-controller");
+
+$controller_ip = $cred["hostname"];
+$controller_pass = $cred["password"];
+$logfile = "./log/actions.log";
 $controller_port = '8899';
 $log_depth = 17000; 
 

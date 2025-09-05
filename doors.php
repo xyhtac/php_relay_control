@@ -1,11 +1,15 @@
 <?php
 // Perco Door Unlock Automator v.1.0
 
-$logfile = "/var/www/html/bms/log/actions.log";
+$logfile = "./log/actions.log";
 $client = $_SERVER['REMOTE_ADDR'];
-$host = "__DoorControllerIP__";
-$username="__DoorControllerUsername__";
-$password="__DoorControllerPassword__";
+
+require_once __DIR__ . "/config.php";
+$cred = load_credentials("door-controller");
+
+$host = $cred["hostname"];
+$username = $cred["username"];
+$password = $cred["password"];
 
 
 # get data from QUERY
