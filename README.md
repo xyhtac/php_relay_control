@@ -7,40 +7,84 @@ Max.Fischer dev@monologic.ru
 
 For detailed information regarding communication protocol and board integrated logic features refer to ![GPIO Controller command protocol](/PROTO.md "GPIO Protocol description")
 
-### Channel control block
-```html
-<table class="io-control-container">
-  <tr>
-    <td>
-      <div class="io-control-icon">
-        <i class="fa fa-envira" aria-hidden="true"></i>
-      </div>
-      <div class="io-control-label">Main pump</div>
-    </td>
-    <td align="right">
-      <div class="io-switch">
-        <input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}' 
-        type="checkbox" io-relay-channel='8' io-relay-invert='true'/>
-      </div>
-    </td>
-  </tr>
-</table>
+### 1. Configure your peripheral credentials
+```json
+{
+    "ptz-cam": {
+      "hostname": "__CamIP__",
+      "username": "__CamUsername__",
+      "password": "__CamPassword__"
+    },
+    "bms-controller": {
+      "hostname": "__BmsControllerIP__",
+      "password": "__BmsControllerPassword__"
+    },
+    "bms-sensor": {
+      "hostname": "__SensorIP__",
+      "community": "__SensorCommunity__",
+      "oid": "1.3.6.1.4.1.25728.8900.1.1.2.1"
+    },
+    "door-controller": {
+      "hostname": "__DoorControllerIP__",
+      "username": "__DoorControllerUsername__",
+      "password": "__DoorControllerPassword__"
+    }
+  }
+  
 ```
 
-### Custom action button block
-```html
-<table class="io-control-container">
-  <tr>
-    <td>
-      <div class="io-control-icon">
-        <i class="fa fa-lock" aria-hidden="true"></i>
-      </div>
-      <div class="io-control-label"> Custom Action</div>
-    </td><td align="right">
-      <div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/action.php?action_id=6'>
-        <div class="custom-action-label">activate</div>
-      </div>
-    </td>
-  </tr>
-</table>
+### 2. Configure relay channels
+```json
+[
+  {
+    "id": 16,
+    "description": "Recuperation pump",
+    "invert": false,
+    "icon": "fa-refresh"
+  },
+  {
+    "id": 15,
+    "description": "Irrigation",
+    "invert": true,
+    "icon": "fa-envira"
+  },
+  {
+    "id": 14,
+    "description": "Well Pump",
+    "invert": false,
+    "icon": "fa-tint"
+  },
+  {
+    "id": 13,
+    "description": "Drain Pump",
+    "invert": false,
+    "icon": "fa-bitbucket"
+  }
+]
+
+
+```
+
+### 3. Configure custom actions
+```json
+[
+  {
+    "description": "Main Gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=6",
+    "button": "activate"
+  },
+  {
+    "description": "Garage gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=4",
+    "button": "activate"
+  },
+  {
+    "description": "Facade gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=2",
+    "button": "unlock"
+  }
+]
 ```

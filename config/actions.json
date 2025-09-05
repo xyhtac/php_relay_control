@@ -1,39 +1,20 @@
 [
-    {
-      "description": "Facade gate",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=6",
-      "button": "activate"
-    },
-    {
-      "description": "Garage gate",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=4",
-      "button": "activate"
-    },
-    {
-      "description": "Garage door",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=2",
-      "button": "unlock"
-    },
-    {
-      "description": "Facade door",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=5",
-      "button": "unlock"
-    },
-    {
-      "description": "Boiler room door",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=3",
-      "button": "unlock"
-    },
-    {
-      "description": "Entrance door",
-      "icon": "fa-lock",
-      "url": "door.php?door_id=1",
-      "button": "unlock"
-    }
-  ]
-  
+  {
+    "description": "Main Gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=6",
+    "button": "activate"
+  },
+  {
+    "description": "Garage gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=4",
+    "button": "activate"
+  },
+  {
+    "description": "Facade gate",
+    "icon": "fa-lock",
+    "url": "door.php?door_id=2",
+    "button": "unlock"
+  }
+]
