@@ -1,6 +1,7 @@
 <?php
-# Web interface for USR-IOT-R16 16-channel electric relay board
+# IO for USR-IOT-R16 16-channel electric relay board
 # Max.Fischer dev@monologic.ru
+
 
 
 require_once __DIR__ . "/config.php";

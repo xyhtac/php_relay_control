@@ -1,5 +1,6 @@
 <?php
 # Dlink PTZ Cam control script v.1.2
+# Max.Fischer dev@monologic.ru
 
 require_once __DIR__ . "/config.php";
 $cam = load_credentials("ptz-cam");
