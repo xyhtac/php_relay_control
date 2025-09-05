@@ -1,7 +1,7 @@
 
 <?php
-# Web Control toolkit
-# Max.Fischer dev@monologic.ru
+// Web Control toolkit
+// Max.Fischer dev@monologic.ru
 
 // Load channels config
 $channels = json_decode(file_get_contents(__DIR__ . '/config/channels.json'), true);

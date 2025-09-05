@@ -1,6 +1,6 @@
 <?php
-# Perco Door Unlock Automator v.1.0
-# Max.Fischer dev@monologic.ru
+// Perco Door Unlock Automator v.1.0
+// Max.Fischer dev@monologic.ru
 
 $logfile = "./log/actions.log";
 $client = $_SERVER['REMOTE_ADDR'];

@@ -1,6 +1,6 @@
 <?php
-# IO for USR-IOT-R16 16-channel electric relay board
-# Max.Fischer dev@monologic.ru
+// IO for USR-IOT-R16 16-channel electric relay board
+// Max.Fischer dev@monologic.ru
 
 
 

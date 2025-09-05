@@ -1,6 +1,6 @@
 <?php
-# Dlink PTZ Cam control script v.1.2
-# Max.Fischer dev@monologic.ru
+// Dlink PTZ Cam control script v.1.2
+// Max.Fischer dev@monologic.ru
 
 require_once __DIR__ . "/config.php";
 $cam = load_credentials("ptz-cam");
@@ -11,6 +11,7 @@ $username = $cam["username"];
 $password = $cam["password"];
 
 $sensorHost = $sensor["hostname"];
+$sensorOID = $sensor["oid"];
 $community = $sensor["community"];
 
 $logfile = "./log/actions.log";
@@ -26,7 +27,7 @@ $sourceLightStatus = getLightStatus();
 $isDark = isDark();
 
 # Check current Security Guard status
-$vigilance = getSNMP ("vigilance_mode", $sensor, "1.3.6.1.4.1.25728.8900.1.1.2.1", $community);
+$vigilance = getSNMP ("vigilance_mode", $sensorHost, $sensorOID, $community);
 
 # if it's dark, light is off and security disarmed - enable lights.
 if ($sourceLightStatus == 0 && $isDark == 1 && $vigilance == 0) { 
