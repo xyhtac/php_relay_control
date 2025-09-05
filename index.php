@@ -1,11 +1,13 @@
 
 <?php
-$configPath = __DIR__ . '/channels.json';
+// Load channels config
+$channels = json_decode(file_get_contents(__DIR__ . '/channels.json'), true);
 
-$channels = json_decode(file_get_contents($configPath), true);
+// Load actions config
+$actions = json_decode(file_get_contents(__DIR__ . '/actions.json'), true);
 
-if ($channels === null) {
-    die("Failed to load channels.json\n");
+if ($channels === null || $actions === null) {
+    die("Failed to load configuration files\n");
 }
 ?>
 
@@ -273,44 +275,41 @@ function panel_update ( ) {
 	
 	<div class="separator"></div>
 	
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Main Gate</div>
-    </td><td align="right">
-		<div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/door-unlock.php?door_id=6'>
-			<div class="custom-action-label">activate</div>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Garage gate</div>
-    </td><td align="right">
-		<div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/door-unlock.php?door_id=4'>
-			<div class="custom-action-label">activate</div>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-lock" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Facade gate</div>
-    </td><td align="right">
-		<div class="io-custom-action" io-custom-script='http://10.0.10.29/scripts/door-unlock.php?door_id=2'>
-			<div class="custom-action-label">unlock</div>
-		</div>
-	</tr></td>
-	</table>
+	<?php foreach ($actions as $action): ?>
+<table class="io-control-container">
+    <tr>
+        <td>
+            <div class="io-control-icon">
+                <i class="fa <?= htmlspecialchars($action['icon']) ?>" aria-hidden="true"></i>
+            </div>
+            <div class="io-control-label">
+                <?= htmlspecialchars($action['description']) ?>
+            </div>
+        </td>
+        <td align="right">
+            <div class="io-custom-action"
+                 io-custom-script="<?= htmlspecialchars($action['url']) ?>">
+                <div class="custom-action-label">
+                    <?= htmlspecialchars($action['button']) ?>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<?php endforeach; ?>
+
+
 	
 </div>
 
 
-<iframe src="io.php" name="cmd" width="0px" height="0px" align="center" border="0">frames disabled</iframe>
+<iframe 
+    src="io.php" 
+    name="cmd" 
+    style="width:0; height:0; border:0; visibility:hidden; position:absolute;">
+    frames disabled
+</iframe>
+
 
 </body>
 </html>
