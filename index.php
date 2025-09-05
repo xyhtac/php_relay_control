@@ -224,7 +224,7 @@ function panel_update ( ) {
 			chan_id = $( this ).attr('io-relay-channel') - 1;
 			toggle_invert = $( this ).attr('io-relay-invert');
 			
-			if (toggle_invert == "true") {
+			if (toggle_invert === "1") {
 				if (relay_channel[ chan_id ] == 1 ) {
 					$( this ).attr('checked',true);
 				} else {
