@@ -1,0 +1,63 @@
+[
+    {
+      "id": 16,
+      "description": "Sewage Treatment",
+      "invert": false,
+      "icon": "fa-refresh"
+    },
+    {
+      "id": 15,
+      "description": "Garden Irrigation",
+      "invert": true,
+      "icon": "fa-envira"
+    },
+    {
+      "id": 14,
+      "description": "Well Pump",
+      "invert": false,
+      "icon": "fa-tint"
+    },
+    {
+      "id": 13,
+      "description": "Drain Pump",
+      "invert": false,
+      "icon": "fa-bitbucket"
+    },
+    {
+      "id": 12,
+      "description": "Radiators 2nd Floor",
+      "invert": false,
+      "icon": "fa-thermometer-half"
+    },
+    {
+      "id": 11,
+      "description": "Hot water circulation",
+      "invert": false,
+      "icon": "fa-shower"
+    },
+    {
+      "id": 10,
+      "description": "Floor heater",
+      "invert": false,
+      "icon": "fa-thermometer-half"
+    },
+    {
+      "id": 9,
+      "description": "Radiators 1st Floor",
+      "invert": false,
+      "icon": "fa-thermometer-half"
+    },
+    {
+      "id": 1,
+      "description": "Basement ventilation",
+      "invert": true,
+      "icon": "fa-spinner"
+    },
+    {
+      "id": 8,
+      "description": "Boiler room ventilation",
+      "invert": true,
+      "icon": "fa-spinner"
+    }
+  ]
+  
