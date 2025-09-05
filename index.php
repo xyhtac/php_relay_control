@@ -206,7 +206,8 @@ $(function(){
 						text: msg_status,
 						btnClass: btn_class,
 						action: function () {
-							url = "io.php?toggle_channel=" + chan_id;
+							const sid = makeSID(8); // generate random 8-char string
+							url = "io.php?toggle_channel=" + chan_id + "&sid=" + sid;
 							top.frames["cmd"].location.href  = url;
 							relay_channel[ chan_id - 1 ] = new_status;
 						}
@@ -242,6 +243,16 @@ function panel_update ( ) {
 			}
 		});	
 }
+
+function makeSID(length = 8) {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let sid = '';
+    for (let i = 0; i < length; i++) {
+        sid += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return sid;
+}
+
 </script>
 <!-- End of JS  -->
 
