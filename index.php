@@ -1,4 +1,70 @@
 
+<?php
+$channels = [
+    [
+        "id" => 16,
+        "description" => "Sewage Treatment",
+        "invert" => false,
+        "icon" => "fa-refresh"
+    ],
+    [
+        "id" => 15,
+        "description" => "Garden Irrigation",
+        "invert" => true,
+        "icon" => "fa-envira"
+    ],
+    [
+        "id" => 14,
+        "description" => "Well Pump",
+        "invert" => false,
+        "icon" => "fa-tint"
+    ],
+    [
+        "id" => 13,
+        "description" => "Drain Pump",
+        "invert" => false,
+        "icon" => "fa-bitbucket"
+    ],
+    [
+        "id" => 12,
+        "description" => "Radiators 2nd Floor",
+        "invert" => false,
+        "icon" => "fa-thermometer-half"
+    ],
+    [
+        "id" => 11,
+        "description" => "Hot water circulation",
+        "invert" => false,
+        "icon" => "fa-shower"
+    ],
+    [
+        "id" => 10,
+        "description" => "Floor heater",
+        "invert" => false,
+        "icon" => "fa-thermometer-half"
+    ],
+    [
+        "id" => 9,
+        "description" => "Radiators 1st Floor",
+        "invert" => false,
+        "icon" => "fa-thermometer-half"
+    ],
+    [
+        "id" => 1,
+        "description" => "Basement ventilation",
+        "invert" => true,
+        "icon" => "fa-spinner"
+    ],
+    [
+        "id" => 8,
+        "description" => "Boiler room ventilation",
+        "invert" => true,
+        "icon" => "fa-spinner"
+    ]
+];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,104 +301,30 @@ function panel_update ( ) {
 <body>
 <div id="canvas">
 
-    <table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-refresh" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Recuperation pump</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='16' />
-		</div>
-	</tr></td>
-	</table>
+<?php foreach ($channels as $ch): ?>
+<table class="io-control-container">
+    <tr>
+        <td>
+            <div class="io-control-icon">
+                <i class="fa <?= htmlspecialchars($ch['icon']) ?>" aria-hidden="true"></i>
+            </div>
+            <div class="io-control-label">
+                <?= htmlspecialchars($ch['description']) ?>
+            </div>
+        </td>
+        <td align="right">
+            <div class="io-switch">
+                <input class="circle-nicelabel"
+                       data-nicelabel='{"position_class": "circle-checkbox"}'
+                       type="checkbox"
+                       io-relay-channel="<?= (int)$ch['id'] ?>"
+                       io-relay-invert="<?= (int)$ch['invert'] ?>" />
+            </div>
+        </td>
+    </tr>
+</table>
+<?php endforeach; ?>
 
-    <table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-envira" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Irrigation</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='15' io-relay-invert='true' />
-		</div>
-	</tr></td>
-	</table>
-	
-    <table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-tint" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Well Pump</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='14'/>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-bitbucket" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Drain Pump</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='13'/>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-thermometer-half" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Heating 2nd Floor</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='12'/>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-thermometer-half" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Heating 1st Floor</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='9'/>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-shower" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Hot water</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='11'/>
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-spinner" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Main Ventilation</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='1' io-relay-invert='true' />
-		</div>
-	</tr></td>
-	</table>
-	
-	<table class="io-control-container">
-    <tr><td>
-    	<div class="io-control-icon"><i class="fa fa-spinner" aria-hidden="true"></i></div>
-    	<div class="io-control-label"> Garage Ventilation</div>
-    </td><td align="right">
-		<div class="io-switch">
-			<input class="circle-nicelabel" data-nicelabel='{"position_class": "circle-checkbox"}'  type="checkbox" io-relay-channel='8' io-relay-invert='true' />
-		</div>
-	</tr></td>
-	</table>
 	
 	<div class="separator"></div>
 	
