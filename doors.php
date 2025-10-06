@@ -1,5 +1,5 @@
 <?php
-// Perco Door Unlock Automator v.1.0
+// Perco Door Unlock Automator v.1.1
 // Max.Fischer dev@monologic.ru
 
 $logfile = "./log/actions.log";
