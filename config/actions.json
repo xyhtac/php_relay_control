@@ -2,19 +2,19 @@
   {
     "description": "Main Gate",
     "icon": "fa-lock",
-    "url": "door.php?door_id=6",
+    "url": "doors.php?door_id=6",
     "button": "activate"
   },
   {
     "description": "Garage gate",
     "icon": "fa-lock",
-    "url": "door.php?door_id=4",
+    "url": "doors.php?door_id=4",
     "button": "activate"
   },
   {
     "description": "Facade gate",
     "icon": "fa-lock",
-    "url": "door.php?door_id=2",
+    "url": "doors.php?door_id=2",
     "button": "unlock"
   }
 ]
